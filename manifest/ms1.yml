@@ -1,0 +1,57 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ms1-v1-service
+  #name is to identify service
+  #namespace: br-retail-app-dev 
+  labels:
+    name: ms1-v1-service
+spec:
+  type: ClusterIP
+  #avoid using NodePort
+  selector:
+    name: ms1-v1-app
+    #name should match with metadata.lables.name in replica-set.yml
+  ports:
+  - port: 8080
+
+---
+
+
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: ms1-v1-app
+  #name will  be used to identify replica set in k8s. and host name of pod
+  #namespace: br-retail-app-dev 
+  #default
+  labels:
+    name: ms1-v1-app   
+    #name will be referenced by service.
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: ms1-v1-app
+  template:
+    metadata:
+      labels:
+        name: ms1-v1-app   
+        #name will have to match with matchLabels.name	
+    spec:
+      containers:
+      - name: ms1-container
+        image: openjdk/s2i:14.0.1
+        env:
+        - name: SPRING_APPLICATION_JSON
+          value: "{\"retail\":{\"portal\":{\"source\":\"amazon\"}}}"
+        - name: version
+          value: "v1"
+        ports:
+          - containerPort: 8080
+        args: ["/bin/bash","-c", "echo $SPRING_APPLICATION_JSON && curl -o /target/app.jar http://192.168.56.1:8080/target/s2i-service-0.0.1.jar && cd /target && java -Xms64m -Xmx128m -jar app.jar"]
+      #args: ["ping","www.google.com"]
+
+      #imagePullSecrets:
+      #- name: regcred
+     

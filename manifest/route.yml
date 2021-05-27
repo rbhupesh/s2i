@@ -1,0 +1,15 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: ms1-v1-service
+  namespace: myproject
+  labels:
+    name: ms1-v1-service
+spec:
+  #host: you.domain.com  it is optional
+  port:
+    targetPort: 8080
+  #path: /test   this is not working on my system 
+  to:
+    kind: Service
+    name: ms1-v1-service
