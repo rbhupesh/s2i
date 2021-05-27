@@ -58,7 +58,9 @@ docker build -t openjdk/s2i:14.0.1 .
 >docker build will download base JDK image and tags it to openjdk/s2i:14.0.1 
 > run below command it should list our s2i image.
 > both command can be combined using pipe
+>
 > curl  http://[minishift ip]:8080/manifest/Dockerfile | docker build -f -  -t openjdk/s2i:14.0.1 .
+> 
 > Refer : https://docs.docker.com/engine/reference/commandline/build/
 ```
 docker images
