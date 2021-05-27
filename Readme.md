@@ -80,6 +80,11 @@ oc get svc
 oc get rs
 oc get pods
 ```
+>Testing
+>Open minikube console
+>check status of pods replicaset services and route
+>click on route url for my run route is
+>http://ms1-v1-service-myproject.192.168.99.101.nip.io/api/v2/greeting/Bhupesh
 17) Cleanup
 ```
 oc delete -f ms1.yml
