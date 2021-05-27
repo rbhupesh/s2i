@@ -68,6 +68,7 @@ mvn clean compile test package
 14) run following command in manifest directory
 ```
 oc create -f ms1.yml
+oc create -f route.yml
 ```
 15) open another shell run following command to check minishift logs
 ```
@@ -78,5 +79,10 @@ minishift logs -f
 oc get svc
 oc get rs
 oc get pods
+```
+17) Cleanup
+```
+oc delete -f ms1.yml
+oc delete -f route.yml
 ```
 
