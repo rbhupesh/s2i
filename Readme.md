@@ -57,6 +57,9 @@ docker build -t openjdk/s2i:14.0.1 .
 ```
 >docker build will download base JDK image and tags it to openjdk/s2i:14.0.1 
 > run below command it should list our s2i image.
+> both command can be combined using pipe
+> curl  http://[minishift ip]:8080/manifest/Dockerfile | docker build -f -  -t openjdk/s2i:14.0.1 .
+> Refer : https://docs.docker.com/engine/reference/commandline/build/
 ```
 docker images
 ```
@@ -85,6 +88,9 @@ oc get pods
 >check status of pods replicaset services and route
 >click on route url for my run route is
 >http://ms1-v1-service-myproject.192.168.99.101.nip.io/api/v2/greeting/Bhupesh
+>route can also be created using simple command like
+>oc expose svc/ms1-v1-service
+
 17) Cleanup
 ```
 oc delete -f ms1.yml
