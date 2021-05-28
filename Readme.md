@@ -18,6 +18,9 @@ This project uses Spring-boot Framework.
 3) add minishift and oc to path envirionment variable
 4) open command line shell run following command.
 >It will download minishift image about 1GB and starts minishift.
+>user should have admin rights
+>run this commands on c: cdrive 
+>network drives are not supported
 ```shell script
  minishift start --vm-driver virtualbox
 ```
