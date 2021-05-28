@@ -38,7 +38,9 @@ git clone https://github.com/rbhupesh/s2i.git
 cd s2i
 ```
 9) start http-server 
->This allows easy way to pull docker file in minishift
+>It serves two purpose
+>Easy way to pull docker file inside minishift
+>Inject springboot Jar file at run time 
 ```
 http-server
 ```
@@ -85,7 +87,7 @@ oc get svc
 oc get rs
 oc get pods
 ```
->Testing
+> ##Testing
 >Open minikube console
 >check status of pods replicaset services and route
 >click on route url for my run route is
@@ -98,4 +100,46 @@ oc get pods
 oc delete -f ms1.yml
 oc delete -f route.yml
 ```
+---
+## useful commands
+### Minishift
+| Command     | 
+| ----------- |
+| Minishift start --vm-driver virtualbox | 
+| minishift openshift registry   | 
+| minishift log -f   | 
+| minishift stop   |
+| minishift delete  |
+
+
+| OC| 
+|-|
+| oc login -u system:admin   | 
+| oc whoami   | 
+| oc logs -f buildconfig/{config name}   | 
+
+| |
+|-|
+| oc create -f rs.yml | 
+| oc create -f svc.yml | 
+| oc create -f route.yml |
+| oc apply -f rs.yml |
+
+| | 
+|-|
+| oc get deployment   | 
+| oc get rs   | 
+| oc get svc   | 
+| oc get imagestream  | 
+| oc get imagestreamtag.image.openshift.io  | 
+| oc get buildconfig  | 
+
+| |
+|-|
+| oc delete deployment  demo | 
+| oc delete rs  demo | 
+| oc delete svc  demo | 
+| oc delete imagestream demo | 
+| oc delete imagestreamtag.image.openshift.io demo | 
+| oc delete buildconfig demo | 
 
