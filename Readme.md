@@ -52,7 +52,7 @@ oc login -u system:admin
 ```
 minishift ssh
 ```
-12) download dockerfile and build it  
+12) to download dockerfile and build it inside minishift (here nodejs web server helps )  
 ```
 curl http://[minishift ip]:8080/manifest/Dockerfile -o Dockerfile
 docker build -t openjdk/s2i:14.0.1 .
